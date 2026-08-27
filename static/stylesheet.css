@@ -1,0 +1,33 @@
+#map {
+    display: grid;
+}
+
+.tile {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.grass {
+    background-color: green;
+}
+
+.goal {
+    visibility: hidden;
+}
+
+.water {
+    background-color: lightblue;
+}
+
+.cherries {
+    background-color: red;
+}
+
+.gapple {
+    background-color: yellow;
+}
+
+.bees {
+    background-color: orange;
+}

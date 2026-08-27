@@ -1,15 +1,11 @@
 import flask
+from flask import render_template
 
 app = flask.Flask(__name__)
 
-@app.route('/hello')
+@app.route('/map-painter')
 def home():
-    return "Hello World"
-
-@app.route('/echo', methods=['POST'])
-def echo():
-    data = flask.request.get_json()
-    return flask.jsonify(data)
+    return render_template('map_painter.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

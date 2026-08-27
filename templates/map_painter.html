@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Map Painter</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./static/stylesheet.css">
+    </head>
+    <body>
+        <div>
+            <h2>
+                Map Painter
+            </h2>
+        </div>
+        <div>
+            <form id="map-form">
+                <label for="rows">Rows</label>
+                <input type="number" id="rows" name="rows" min="3" required>
+                <label for="cols">Cols</label>
+                <input type="number" id="cols" name="cols" min="3" required>
+                <input type="submit" value="Create Map">
+            </form>
+        </div>
+        <div id="selected-tile">
+            <button type="button" value="grass">Grass</button>
+            <button type="button" value="water">Water</button>
+            <button type="button" value="cherries">Cherries</button>
+            <button type="button" value="gapple">Gapple</button>
+            <button type="button" value="bees">Bees</button>
+        </div>
+        <div id="map"></div>
+        <script src="{{ url_for('static', filename='map_painter.js') }}"></script>
+    </body>
+</html>
