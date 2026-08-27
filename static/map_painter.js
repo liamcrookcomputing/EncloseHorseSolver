@@ -30,9 +30,11 @@ form.addEventListener("submit", function(event) {
     })
 
     let grid = [];
+    let tileElements = [];
 
     for (let row = 0; row < data.rows; row++) {
-        grid.push([])
+        grid.push([]);
+        tileElements.push([]);
         for (let col = 0; col < data.cols; col++) {
             // Check edge cases and init
             if (row === 0 || row === data.rows - 1 || col === 0 || col === data.cols - 1) {
@@ -45,11 +47,31 @@ form.addEventListener("submit", function(event) {
 
             // Create a html element for each tile
             const tile = document.createElement("div");
+            tileElements[row].push(tile);
             tile.classList.add("tile")
             const tileClass = Object.keys(Tiles).find(key => Tiles[key] === grid[row][col]).toLowerCase();
             tile.classList.add(tileClass)
 
             tile.addEventListener("click", function() {
+
+                if (selectedTile === 'horse') {
+                    // Find the existing horse
+                    for (let rowIndex = 0; rowIndex < grid.length; rowIndex++) {
+                        for (let colIndex = 0; colIndex < grid[rowIndex].length; colIndex++) {
+                            if (grid[rowIndex][colIndex] === Tiles.HORSE) {
+
+                                grid[rowIndex][colIndex] = Tiles.GRASS;
+
+                                const oldHorse = tileElements[rowIndex][colIndex];
+
+                                oldHorse.className = '';
+                                oldHorse.classList.add("tile");
+                                oldHorse.classList.add("grass");
+                            }
+                        }
+                    }
+                }
+
                 tile.className = '';
                 tile.classList.add("tile")
                 tile.classList.add(selectedTile)
@@ -59,4 +81,20 @@ form.addEventListener("submit", function(event) {
             map.appendChild(tile);
         }
     }
+
+    fetch("/solve", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            grid: grid,
+            wallBudget: Number(data["wall-budget"])
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
 })
+
