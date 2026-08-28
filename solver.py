@@ -2,8 +2,6 @@ from enum import Enum
 from flask import request
 import pulp
 
-# Day 241 Map
-
 class Tiles(Enum):
     HORSE = 0
     GRASS = 1
@@ -129,7 +127,14 @@ def solve_map(grid, wall_budget):
         if pulp.value(var) == 1:
             walls.append([r, c])
     
+    free_tiles = []
+
+    for (r, c), var in free.items():
+        if pulp.value(var) == 1:
+            free_tiles.append([r, c])
+    
     return {
         "walls": walls,
+        "free": free_tiles,
         "score": pulp.value(prob.objective)
     }

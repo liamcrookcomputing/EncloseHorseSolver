@@ -1,15 +1,189 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: #181818;
+    color: #e6e6e6;
+}
+
+.container {
+    width: min(1200px, 94%);
+    margin: 0 auto;
+    padding: 32px 0 50px;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    margin: 0 0 5px;
+
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.header p {
+    margin: 0;
+
+    color: #999;
+    font-size: 14px;
+}
+
+.panel {
+    background: #202020;
+    border: 1px solid #303030;
+
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.panel h2 {
+    margin: 0 0 14px;
+
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.map-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    color: #aaa;
+}
+
+.form-group input {
+    width: 110px;
+    height: 38px;
+
+    padding: 8px 10px;
+
+    background: #181818;
+    color: #eee;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 4px;
+
+    font-size: 14px;
+}
+
+.form-group input:hover {
+    border-color: #555;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #777;
+}
+
+button {
+    height: 38px;
+
+    padding: 0 14px;
+
+    border: 1px solid #444;
+    border-radius: 4px;
+
+    background: #303030;
+    color: #ddd;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.1s ease,
+        border-color 0.1s ease;
+}
+
+button:hover {
+    background: #383838;
+    border-color: #555;
+}
+
+button:active {
+    background: #292929;
+}
+
+.create-button {
+    background: #3a3a3a;
+    border-color: #505050;
+    color: #fff;
+}
+
+.create-button:hover {
+    background: #454545;
+}
+
+.tile-palette {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tile-palette button {
+    min-width: 80px;
+}
+
+.map-container {
+    width: 100%;
+
+    overflow: auto;
+
+    background: #141414;
+    border: 1px solid #303030;
+
+    padding: 20px;
+
+    margin-bottom: 16px;
+}
+
 #map {
     display: grid;
+
+    width: max-content;
+
+    margin: 0 auto;
+
+    background: #111;
 }
 
 .tile {
     width: 40px;
     height: 40px;
-    border: 1px solid black;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+
+    cursor: pointer;
+
+    transition: filter 0.08s ease;
+}
+
+.tile:hover {
+    filter: brightness(1.2);
 }
 
 .grass {
-    background-color: green;
+    background: #4f9d52;
 }
 
 .goal {
@@ -17,17 +191,52 @@
 }
 
 .water {
-    background-color: lightblue;
+    background: #4c9dcc;
+}
+
+.horse {
+    background: #79502f;
 }
 
 .cherries {
-    background-color: red;
+    background: #c94343;
 }
 
 .gapple {
-    background-color: yellow;
+    background: #d6aa35;
 }
 
 .bees {
-    background-color: orange;
+    background: #d98b27;
+}
+
+.wall {
+    background: #3b3b3b !important;
+    border: 2px solid #171717;
+}
+
+.enclosed {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+}
+
+.solve-button {
+    display: block;
+
+    width: 100%;
+    height: 42px;
+
+    padding: 0 14px;
+
+    background: #333;
+    border: 1px solid #4a4a4a;
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.solve-button:hover {
+    background: #3d3d3d;
+    border-color: #5a5a5a;
 }
